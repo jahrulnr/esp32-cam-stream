@@ -15,6 +15,16 @@ void startWebServer() {
 
 }
 
+/**
+ * @brief Handles the homepage request and serves the HTML page.
+ * 
+ * This function responds to the request for the homepage by sending an HTML page that
+ * displays a live stream from the ESP32-CAM. The HTML page includes controls for adjusting
+ * the brightness, saturation, and contrast of the video stream, as well as buttons to switch
+ * the camera resolution. The video stream is displayed using a WebSocket connection.
+ * 
+ * @param request Pointer to the AsyncWebServerRequest object that contains information about the request.
+ */
 void handleHomepage(AsyncWebServerRequest *request) {
     // Serve the HTML page  
     request->send(200, "text/html", R"rawliteral(    

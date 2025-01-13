@@ -14,6 +14,16 @@ void handleWebSocketMessage(uint8_t num, WStype_t type, uint8_t * payload, size_
     // Handle WebSocket messages if needed    
 }    
   
+/**
+ * @brief Sends a frame captured from the camera to all connected WebSocket clients.
+ * 
+ * This function captures a frame from the ESP32 camera and broadcasts it to all
+ * connected WebSocket clients using binary data. If the frame buffer cannot be
+ * retrieved, an error message is printed to the serial monitor.
+ * 
+ * @note Ensure that the WebSocket server is properly initialized and that clients
+ *       are connected before calling this function.
+ */
 void sendFrameToWebSocket() {    
     camera_fb_t *fb = esp_camera_fb_get(); // Get a frame from the camera    
     if (!fb) {    

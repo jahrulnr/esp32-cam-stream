@@ -3,8 +3,18 @@
 #include "NetworkConfig.h"  
 #include "WebSocketHandler.h" 
 #include "WebServer.h" 
-#include "GPIO.h"
   
+/**
+ * @brief Setup function to initialize the ESP32-CAM.
+ * 
+ * This function performs the following initializations:
+ * - Initializes serial communication at 115200 baud rate.
+ * - Sets the LED flashlight pin mode to OUTPUT.
+ * - Attempts to connect to WiFi by calling startNetwork().
+ * - Starts the camera by calling startCamera().
+ * - Starts the WebSocket server by calling startWebSocket().
+ * - Starts the web server by calling startWebServer().
+ */
 void setup() {      
     Serial.begin(115200);      
     pinMode(LED_FLASHLIGHT, OUTPUT);  
@@ -20,12 +30,6 @@ void setup() {
 
     // Start Server
     startWebServer();
-    
-    pinMode(DYNAMO_PIN1, OUTPUT);
-    pinMode(DYNAMO_PIN2, OUTPUT);
-
-    pinMode(DYNAMO_PIN3, OUTPUT);
-    pinMode(DYNAMO_PIN4, OUTPUT);
 }      
   
 int inputValue = 0;

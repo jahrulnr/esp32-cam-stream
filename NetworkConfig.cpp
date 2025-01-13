@@ -11,6 +11,19 @@ const IPAddress local_IP(192, 168, 1, 1);
 const IPAddress gateway(192, 168, 1, 1);  
 const IPAddress subnet(255, 255, 255, 0);  
   
+/**
+ * @brief Starts the network connection process.
+ * 
+ * This function attempts to connect to a WiFi network using the provided 
+ * SSID and password. If the connection is successful, it prints the IP 
+ * address assigned to the device. If the connection fails after a 
+ * specified number of attempts, it starts the device in Access Point (AP) 
+ * mode with a predefined SSID and password, and prints the AP IP address.
+ * 
+ * @note Ensure that the WiFi credentials (wifiSSID and wifiPassword) and 
+ * the AP configuration (local_IP, gateway, subnet, ssid, password) are 
+ * correctly defined before calling this function.
+ */
 void startNetwork() {     
     // Attempt to connect to WiFi    
     WiFi.begin(wifiSSID, wifiPassword);    
