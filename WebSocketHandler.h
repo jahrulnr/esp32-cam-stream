@@ -7,6 +7,8 @@
 extern WebSocketsServer webSocket; // Declare it as extern  
   
 void startWebSocket();  
+String webSocketMessage();
+String getLastWebSocketMessage();
 void handleWebSocketMessage(uint8_t num, WStype_t type, uint8_t * payload, size_t length);  
 void sendFrameToWebSocket();  
   

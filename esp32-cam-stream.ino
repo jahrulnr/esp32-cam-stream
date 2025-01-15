@@ -3,6 +3,7 @@
 #include "NetworkConfig.h"  
 #include "WebSocketHandler.h" 
 #include "WebServer.h" 
+#include "Motor.h"
   
 /**
  * @brief Setup function to initialize the ESP32-CAM.
@@ -18,6 +19,10 @@
 void setup() {      
     Serial.begin(115200);      
     pinMode(LED_FLASHLIGHT, OUTPUT);  
+    pinMode(CONTROL_PIN_FORWARD, OUTPUT);  
+    pinMode(CONTROL_PIN_BACKWARD, OUTPUT);  
+    pinMode(CONTROL_PIN_LEFT, OUTPUT);  
+    pinMode(CONTROL_PIN_RIGHT, OUTPUT); 
       
     // Attempt to connect to WiFi      
     startNetwork();  
@@ -32,9 +37,20 @@ void setup() {
     startWebServer();
 }      
   
-int inputValue = 0;
 void loop() {      
     // Handle WebSocket connections    
     webSocket.loop();    
-    sendFrameToWebSocket(); // Send frames to WebSocket
+  
+    // Check for incoming WebSocket messages  
+    String command = webSocketMessage();  
+    if (command.length() > 0) {  
+        handleMotorControl(command, true);  
+    }  
+      
+    // Update motor states based on active commands  
+    updateMotorStates();  
+
+    // Send frames to WebSocket
+    sendFrameToWebSocket();
+
 }  

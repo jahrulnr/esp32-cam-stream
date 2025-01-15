@@ -22,6 +22,13 @@
 #define PCLK_GPIO_NUM     22      
 #define LED_FLASHLIGHT     4  
   
+/**
+ * @brief Initializes and starts the camera.
+ * 
+ * This function sets up the necessary configurations and starts the camera
+ * for capturing images or streaming video. It should be called before any
+ * camera operations are performed.
+ */
 void startCamera();  
   
 #endif // CAMERA_CONFIG_H  

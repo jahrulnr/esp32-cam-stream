@@ -5,6 +5,20 @@
 sensor_t *s;  
 framesize_t currentFrameSize = FRAMESIZE_QVGA; // Default frame size    
   
+/**
+ * @brief Initializes and starts the camera with the specified configuration.
+ * 
+ * This function sets up the camera configuration parameters, including pin assignments,
+ * clock frequency, pixel format, frame size, and buffer location. It also checks for the
+ * presence of PSRAM and adjusts the configuration accordingly. Finally, it initializes
+ * the camera and prints an error message if the initialization fails.
+ * 
+ * @note The function assumes that the necessary GPIO pin definitions (e.g., Y2_GPIO_NUM, 
+ * XCLK_GPIO_NUM) and camera configuration structures (e.g., camera_config_t) are defined 
+ * elsewhere in the code.
+ * 
+ * @return void
+ */
 void startCamera() {   
     Serial.println("Starting Camera");   
     camera_config_t config;    
